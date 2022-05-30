@@ -4,7 +4,7 @@ const cx0 = 50;
 const cy0 = 50;
 const r0 = 45;
 
-const drawCircles = (n) => {
+const drawCircles = (n: number) => {
   // recuperer l'elt svg g.circles
   const elt = document.querySelector("svg g.circles");
 
@@ -27,4 +27,4 @@ const drawCircles = (n) => {
   }
 };
 
-drawCircles(10);
+drawCircles(12);
