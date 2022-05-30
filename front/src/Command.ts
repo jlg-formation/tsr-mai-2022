@@ -1,4 +1,5 @@
 import { Config } from "./Config";
+import { querySelector } from "./utils";
 
 export class Command {
   constructor(private config: Config) {
@@ -15,11 +16,14 @@ export class Command {
   }
 
   setInput(key: keyof Config) {
-    // recuperer le text html (la ou il y a le nombre)
-    const elt = document.querySelector(`div.command label.${key} span`);
+    const elt = querySelector(
+      `div.command label.${key} span`,
+      HTMLElement
+    ) as HTMLElement;
     elt.innerHTML = this.config[key] + "";
-    const input = document.querySelector(
-      `div.command label.${key} input`
+    const input = querySelector(
+      `div.command label.${key} input`,
+      HTMLInputElement
     ) as HTMLInputElement;
     input.value = this.config[key] + "";
   }

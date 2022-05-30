@@ -12,3 +12,11 @@ export const getCoordinatesOnCircle = (angle: number): Point => {
     y: cy0 + r0 * Math.sin(angle),
   };
 };
+
+export const querySelector = (selector: string, MyClass: new () => any) => {
+  const elt = document.querySelector(selector);
+  if (!(elt instanceof MyClass)) {
+    throw new Error("Cannot find element at selector " + selector);
+  }
+  return elt;
+};
