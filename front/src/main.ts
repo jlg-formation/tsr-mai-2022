@@ -1,3 +1,5 @@
+import "./style.css";
+
 console.log("coucou");
 
 const cx0 = 50;
