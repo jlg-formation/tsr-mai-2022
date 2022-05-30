@@ -1,10 +1,8 @@
 import "./style.css";
 
-console.log("coucou");
+import { cx0, cy0, r0 } from "./Constants";
 
-const cx0 = 50;
-const cy0 = 50;
-const r0 = 45;
+console.log("coucou");
 
 const drawCircles = (n: number) => {
   // recuperer l'elt svg g.circles
