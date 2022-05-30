@@ -18,3 +18,7 @@ line {
   stroke: black;
   stroke-width: 0.02em;
 }
+
+g.circles circle {
+  fill: black;
+}
