@@ -1,3 +1,20 @@
 body {
   font-family: sans-serif;
 }
+
+svg {
+  width: 50em;
+  height: 30em;
+  border: 0.1em solid black;
+}
+
+circle {
+  fill: transparent;
+  stroke: black;
+  stroke-width: 0.02em;
+}
+
+line {
+  stroke: black;
+  stroke-width: 0.02em;
+}
