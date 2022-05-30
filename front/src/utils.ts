@@ -13,7 +13,7 @@ export const getCoordinatesOnCircle = (angle: number): Point => {
   };
 };
 
-export const querySelector = (selector: string, MyClass: new () => any) => {
+export const querySelector = <T>(selector: string, MyClass: new () => T): T => {
   const elt = document.querySelector(selector);
   if (!(elt instanceof MyClass)) {
     throw new Error("Cannot find element at selector " + selector);

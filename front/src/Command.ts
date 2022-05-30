@@ -16,15 +16,12 @@ export class Command {
   }
 
   setInput(key: keyof Config) {
-    const elt = querySelector(
-      `div.command label.${key} span`,
-      HTMLElement
-    ) as HTMLElement;
+    const elt = querySelector(`div.command label.${key} span`, HTMLElement);
     elt.innerHTML = this.config[key] + "";
     const input = querySelector(
       `div.command label.${key} input`,
       HTMLInputElement
-    ) as HTMLInputElement;
+    );
     input.value = this.config[key] + "";
   }
 }
