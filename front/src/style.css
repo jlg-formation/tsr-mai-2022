@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
 }
@@ -21,4 +25,14 @@ line {
 
 g.circles circle {
   fill: black;
+}
+
+div.command {
+  border: 0.1em solid black;
+  width: 50em;
+  padding: 0.5em;
+}
+
+input[type="range"] {
+  width: 100%;
 }
