@@ -4,8 +4,8 @@ import { getAngle, getCoordinatesOnCircle } from "./utils";
 
 console.log("coucou");
 
-const sampleNbr = 50;
-const multiplicationFactor = 34;
+const sampleNbr = 71;
+const multiplicationFactor = 36;
 
 const drawCircles = (n: number) => {
   const elt = document.querySelector("svg g.circles");
