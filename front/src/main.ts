@@ -19,9 +19,9 @@ const drawCircles = (n) => {
       "http://www.w3.org/2000/svg",
       "circle"
     );
-    circle.setAttributeNS(null, "cx", cx);
-    circle.setAttributeNS(null, "cy", cy);
-    circle.setAttributeNS(null, "r", 1);
+    circle.setAttributeNS(null, "cx", cx + "");
+    circle.setAttributeNS(null, "cy", cy + "");
+    circle.setAttributeNS(null, "r", "1");
     // ajouter le petit cercle au DOM
     elt.appendChild(circle);
   }
