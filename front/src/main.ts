@@ -4,7 +4,7 @@ import { getAngle, getCoordinatesOnCircle } from "./utils";
 
 console.log("coucou");
 
-const sampleNbr = 71;
+const sampleNbr = 73;
 const multiplicationFactor = 36;
 
 const drawCircles = (n: number) => {
