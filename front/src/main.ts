@@ -1,20 +1,7 @@
 import "./style.css";
-
-import { cx0, cy0, r0 } from "./Constants";
-import { Point } from "./interfaces/Point";
+import { getAngle, getCoordinatesOnCircle } from "./utils";
 
 console.log("coucou");
-
-const getAngle = (index: number, total: number) => {
-  return (index * (2 * Math.PI)) / total;
-};
-
-const getCoordinatesOnCircle = (angle: number): Point => {
-  return {
-    x: cx0 + r0 * Math.cos(angle),
-    y: cy0 + r0 * Math.sin(angle),
-  };
-};
 
 const drawCircles = (n: number) => {
   const elt = document.querySelector("svg g.circles");
