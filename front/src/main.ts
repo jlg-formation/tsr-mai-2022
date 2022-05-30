@@ -4,8 +4,8 @@ import { getAngle, getCoordinatesOnCircle } from "./utils";
 
 console.log("coucou");
 
-const n = 50;
-const m = 34;
+const sampleNbr = 50;
+const multiplicationFactor = 34;
 
 const drawCircles = (n: number) => {
   const elt = document.querySelector("svg g.circles");
@@ -27,7 +27,7 @@ const drawCircles = (n: number) => {
   }
 };
 
-drawCircles(n);
+drawCircles(sampleNbr);
 
 const drawLines = (n: number, multiplicationFactor: number) => {
   const elt = document.querySelector("svg g.lines");
@@ -54,4 +54,4 @@ const drawLine = (p1: Point, p2: Point) => {
   elt.appendChild(line);
 };
 
-drawLines(n, m);
+drawLines(sampleNbr, multiplicationFactor);
