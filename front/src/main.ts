@@ -1,5 +1,4 @@
 import { Command } from "./Command";
-import { Point } from "./interfaces/Point";
 import "./style.css";
 import { VisualMultiplicator } from "./VisualMultiplicator";
 
