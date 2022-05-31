@@ -64,7 +64,7 @@ export class Command {
             : this.config.multiplicationFactor;
         this.applyConfig();
         this.callback(this.config);
-      }, 1000);
+      }, 200);
       console.log("this.interval: ", this.interval);
 
       return;
