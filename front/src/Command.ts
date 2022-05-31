@@ -22,6 +22,8 @@ export class Command {
       console.log("input: ", input);
       input.addEventListener("input", (event) => {
         console.log("event: ", event);
+        const input = event.target as HTMLInputElement;
+        console.log("input.value: ", input.value);
       });
     }
   }
