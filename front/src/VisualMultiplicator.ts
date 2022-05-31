@@ -1,6 +1,6 @@
 import { Config } from "./Config";
 import { Point } from "./interfaces/Point";
-import { getAngle, getCoordinatesOnCircle } from "./utils";
+import { getAngle, getCoordinatesOnCircle, querySelector } from "./utils";
 
 export class VisualMultiplicator {
   config: Config = {
@@ -19,7 +19,7 @@ export class VisualMultiplicator {
 }
 
 const drawCircles = (n: number) => {
-  const elt = document.querySelector("svg g.circles") as HTMLElement;
+  const elt = querySelector("svg g.circles", Element);
 
   // boucle de 1 a n
   for (let i = 0; i < n; i++) {
@@ -39,8 +39,6 @@ const drawCircles = (n: number) => {
 };
 
 const drawLines = (n: number, multiplicationFactor: number) => {
-  const elt = document.querySelector("svg g.lines");
-
   // boucle de 1 a n
   for (let i = 0; i < n; i++) {
     const angle1 = getAngle(i, n);
@@ -52,7 +50,7 @@ const drawLines = (n: number, multiplicationFactor: number) => {
 };
 
 const drawLine = (p1: Point, p2: Point) => {
-  const elt = document.querySelector("svg g.lines") as HTMLElement;
+  const elt = querySelector("svg g.lines", Element);
 
   const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
   line.setAttributeNS(null, "x1", p1.x + "");
