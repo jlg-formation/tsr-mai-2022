@@ -4,6 +4,9 @@ import { querySelector } from "./utils";
 export class Command {
   callback: (newConfig: Config) => void = () => {};
 
+  isPlaying = false;
+  interval: number | undefined = undefined;
+
   constructor(private config: Config) {
     this.applyConfig();
     this.listenEvents();
@@ -15,10 +18,6 @@ export class Command {
   }
 
   listenEvents() {
-    // pour chaque input
-    // ecouter tout changement de l'input
-    // modifier le chiffre au dessus
-    // jouer la fonction demandee par onUpdate
     const inputs = document.querySelectorAll("div.command input");
     for (const input of inputs) {
       console.log("input: ", input);
@@ -41,6 +40,36 @@ export class Command {
         this.applyConfig();
         this.callback(this.config);
       });
+    }
+
+    const playButton = querySelector("div.command button", HTMLButtonElement);
+    playButton.addEventListener("click", (event) => {
+      console.log("event: ", event);
+      this.isPlaying = !this.isPlaying;
+      this.managePlayer();
+    });
+  }
+  managePlayer() {
+    const playButton = querySelector("div.command button", HTMLButtonElement);
+    if (this.isPlaying) {
+      // affiche stop sur le bouton
+      playButton.innerHTML = "Stop";
+      // toutes les secondes ajouter 1 a multiplicationFactor
+      this.interval = setInterval(() => {
+        console.log("tick");
+        this.config.multiplicationFactor++;
+        this.applyConfig();
+        this.callback(this.config);
+      }, 1000) as unknown as number;
+      console.log("this.interval: ", this.interval);
+
+      return;
+    }
+    // stopper l'interval
+    playButton.innerHTML = "Play";
+    if (this.interval !== undefined) {
+      clearInterval(this.interval);
+      this.interval = undefined;
     }
   }
 
