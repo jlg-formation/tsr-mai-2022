@@ -1,10 +1,15 @@
 import { Config } from "./Config";
 import { querySelector, sleep } from "./utils";
 
+enum PlayState {
+  PLAYING = 1,
+  IDLE = 2,
+}
+
 export class Command {
   callback: (newConfig: Config) => void = () => {};
 
-  isPlaying = false;
+  isPlaying = PlayState.IDLE;
 
   constructor(private config: Config) {
     // constructor...
@@ -45,7 +50,8 @@ export class Command {
     const playButton = querySelector("div.command button", HTMLButtonElement);
     playButton.addEventListener("click", (event) => {
       console.log("event: ", event);
-      this.isPlaying = !this.isPlaying;
+      this.isPlaying =
+        this.isPlaying === PlayState.IDLE ? PlayState.PLAYING : PlayState.IDLE;
       this.managePlayer();
     });
   }
@@ -54,7 +60,7 @@ export class Command {
 
     (async () => {
       playButton.innerHTML = "Stop";
-      while (this.isPlaying) {
+      while (this.isPlaying === PlayState.PLAYING) {
         console.log("tick");
         this.config.multiplicationFactor++;
         this.config.multiplicationFactor =
