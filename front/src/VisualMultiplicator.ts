@@ -19,7 +19,7 @@ export class VisualMultiplicator {
 }
 
 const drawCircles = (n: number) => {
-  const elt = document.querySelector("svg g.circles");
+  const elt = document.querySelector("svg g.circles") as HTMLElement;
 
   // boucle de 1 a n
   for (let i = 0; i < n; i++) {
@@ -52,7 +52,7 @@ const drawLines = (n: number, multiplicationFactor: number) => {
 };
 
 const drawLine = (p1: Point, p2: Point) => {
-  const elt = document.querySelector("svg g.lines");
+  const elt = document.querySelector("svg g.lines") as HTMLElement;
 
   const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
   line.setAttributeNS(null, "x1", p1.x + "");
