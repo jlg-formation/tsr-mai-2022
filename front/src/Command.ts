@@ -58,6 +58,10 @@ export class Command {
       this.interval = setInterval(() => {
         console.log("tick");
         this.config.multiplicationFactor++;
+        this.config.multiplicationFactor =
+          this.config.multiplicationFactor > 100
+            ? 1
+            : this.config.multiplicationFactor;
         this.applyConfig();
         this.callback(this.config);
       }, 1000) as unknown as number;
