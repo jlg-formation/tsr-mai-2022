@@ -1,11 +1,10 @@
 import { Config } from "./Config";
-import { querySelector } from "./utils";
+import { querySelector, sleep } from "./utils";
 
 export class Command {
   callback: (newConfig: Config) => void = () => {};
 
   isPlaying = false;
-  interval: number | undefined = undefined;
 
   constructor(private config: Config) {
     this.applyConfig();
@@ -51,11 +50,10 @@ export class Command {
   }
   managePlayer() {
     const playButton = querySelector("div.command button", HTMLButtonElement);
-    if (this.isPlaying) {
-      // affiche stop sur le bouton
+
+    (async () => {
       playButton.innerHTML = "Stop";
-      // toutes les secondes ajouter 1 a multiplicationFactor
-      this.interval = window.setInterval(() => {
+      while (this.isPlaying) {
         console.log("tick");
         this.config.multiplicationFactor++;
         this.config.multiplicationFactor =
@@ -64,17 +62,11 @@ export class Command {
             : this.config.multiplicationFactor;
         this.applyConfig();
         this.callback(this.config);
-      }, 200);
-      console.log("this.interval: ", this.interval);
+        await sleep(200);
+      }
 
-      return;
-    }
-    // stopper l'interval
-    playButton.innerHTML = "Play";
-    if (this.interval !== undefined) {
-      window.clearInterval(this.interval);
-      this.interval = undefined;
-    }
+      playButton.innerHTML = "Play";
+    })();
   }
 
   onUpdate(callback: (newConfig: Config) => void) {
