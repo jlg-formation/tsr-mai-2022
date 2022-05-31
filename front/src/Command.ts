@@ -7,6 +7,7 @@ export class Command {
   isPlaying = false;
 
   constructor(private config: Config) {
+    // constructor...
     this.applyConfig();
     this.listenEvents();
   }
