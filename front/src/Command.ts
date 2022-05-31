@@ -55,7 +55,7 @@ export class Command {
       // affiche stop sur le bouton
       playButton.innerHTML = "Stop";
       // toutes les secondes ajouter 1 a multiplicationFactor
-      this.interval = setInterval(() => {
+      this.interval = window.setInterval(() => {
         console.log("tick");
         this.config.multiplicationFactor++;
         this.config.multiplicationFactor =
@@ -64,7 +64,7 @@ export class Command {
             : this.config.multiplicationFactor;
         this.applyConfig();
         this.callback(this.config);
-      }, 1000) as unknown as number;
+      }, 1000);
       console.log("this.interval: ", this.interval);
 
       return;
@@ -72,7 +72,7 @@ export class Command {
     // stopper l'interval
     playButton.innerHTML = "Play";
     if (this.interval !== undefined) {
-      clearInterval(this.interval);
+      window.clearInterval(this.interval);
       this.interval = undefined;
     }
   }
