@@ -4,11 +4,26 @@ import { querySelector } from "./utils";
 export class Command {
   constructor(private config: Config) {
     this.applyConfig();
+    this.listenEvents();
   }
 
   applyConfig() {
     this.setInput("sampleNbr");
     this.setInput("multiplicationFactor");
+  }
+
+  listenEvents() {
+    // pour chaque input
+    // ecouter tout changement de l'input
+    // modifier le chiffre au dessus
+    // jouer la fonction demandee par onUpdate
+    const inputs = document.querySelectorAll("div.command input");
+    for (const input of inputs) {
+      console.log("input: ", input);
+      input.addEventListener("input", (event) => {
+        console.log("event: ", event);
+      });
+    }
   }
 
   onUpdate(callback: (newConfig: Config) => void) {
