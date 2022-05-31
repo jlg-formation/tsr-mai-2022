@@ -13,5 +13,5 @@
   "rules": {
     "@typescript-eslint/no-empty-function": 0
   },
-  "ignorePatterns": ["webpack.config.js"]
+  "ignorePatterns": ["webpack.config.js", "dist/**/*"]
 }
