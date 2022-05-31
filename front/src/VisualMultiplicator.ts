@@ -9,8 +9,16 @@ export class VisualMultiplicator {
   };
 
   draw() {
+    this.clear();
     drawCircles(this.config.sampleNbr);
     drawLines(this.config.sampleNbr, this.config.multiplicationFactor);
+  }
+
+  clear() {
+    const circleGroup = querySelector("svg g.circles", Element);
+    circleGroup.innerHTML = "";
+    const lineGroup = querySelector("svg g.lines", Element);
+    lineGroup.innerHTML = "";
   }
 
   setConfig(config: Config) {

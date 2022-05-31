@@ -2,6 +2,8 @@ import { Config } from "./Config";
 import { querySelector } from "./utils";
 
 export class Command {
+  callback: (newConfig: Config) => void = () => {};
+
   constructor(private config: Config) {
     this.applyConfig();
     this.listenEvents();
@@ -37,12 +39,14 @@ export class Command {
         }
         this.config[name as keyof Config] = +input.value;
         this.applyConfig();
+        this.callback(this.config);
       });
     }
   }
 
   onUpdate(callback: (newConfig: Config) => void) {
     console.log("onUpdate");
+    this.callback = callback;
   }
 
   setInput(key: keyof Config) {
