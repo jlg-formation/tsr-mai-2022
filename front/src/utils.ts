@@ -22,9 +22,11 @@ export const querySelector = <T>(selector: string, MyClass: new () => T): T => {
   return elt;
 };
 
-export const sleep = (delayMs: number) =>
+export type Millisecond = number;
+
+export const sleep = (delay: Millisecond) =>
   new Promise<void>((resolve) =>
     setTimeout(() => {
       resolve();
-    }, delayMs)
+    }, delay)
   );
