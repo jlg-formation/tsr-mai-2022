@@ -22,8 +22,21 @@ export class Command {
       console.log("input: ", input);
       input.addEventListener("input", (event) => {
         console.log("event: ", event);
-        const input = event.target as HTMLInputElement;
+        const input = event.target;
+        if (!(input instanceof HTMLInputElement)) {
+          throw new Error("no input found");
+        }
         console.log("input.value: ", input.value);
+        const name = input.parentElement?.className;
+        if (typeof name !== "string") {
+          throw new Error("no name found");
+        }
+        console.log("name: ", name);
+        if (!["sampleNbr", "multiplicationFactor"].includes(name)) {
+          throw new Error("name is not a config key");
+        }
+        this.config[name as keyof Config] = +input.value;
+        this.applyConfig();
       });
     }
   }
